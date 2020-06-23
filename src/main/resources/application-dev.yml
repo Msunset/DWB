@@ -1,0 +1,31 @@
+server:
+  port: 10001
+  servlet:
+    session:
+      timeout: 1800s
+spring:
+  datasource:
+    username: root
+#    username: qdsms
+    password: 15155775757a
+#    password: DxYLJBhC7tjE4C3Z
+    url: jdbc:mysql://cdb-8a359y0c.bj.tencentcdb.com:10194/shopxo?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&useSSL=false
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+mybatis:
+  mapper-locations: classpath:mapping/*Mapper.xml
+  type-aliases-package: com.dwb.entity
+
+#showSql
+logging:
+  level:
+    com:
+      qiduo:
+        qdsms:
+          mappers: info
+# pagehelper
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql

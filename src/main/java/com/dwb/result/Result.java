@@ -143,7 +143,11 @@ public class Result<T> implements Serializable {
 		setCode(resultCode.getCode());
 		setFormatMessage(resultCode.getMessage(), args);
 	}
-	
+	public static <T> Result<T> newErrorException(Integer errorCode, String errorMsg) {
+		return new Result<T>(errorCode, errorMsg, false, null);
+	}
+
+
 	public void setFormatMessage(String message, Object... args){
 		if (args == null || args.length == 0) {
 			this.setMessage(message);
