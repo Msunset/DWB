@@ -14,8 +14,22 @@ import org.springframework.stereotype.Service;
 public class EnterpriseService {
     @Autowired
     private EnterpriseMapper enterpriseMapper;
+
+    /**
+     * 获取企业信息
+     * @return
+     */
     public PEnterprise getInfo() {
         return enterpriseMapper.selectAll().get(0);
+
+    }
+
+    /**
+     * 更新企业信息
+     * @param pEnterprise
+     */
+    public void update(PEnterprise pEnterprise) {
+        enterpriseMapper.updateByPrimaryKeySelective(pEnterprise);
 
     }
 }

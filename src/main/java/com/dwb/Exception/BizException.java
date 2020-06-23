@@ -1,31 +1,67 @@
-package com.dwb.Exception;
+package com.qiduo.common.config;
+
+
+import com.dwb.result.ResultCode;
 
 /**
- * @Author manke
- * @Date 2020/6/23 11:59
- * @Version 0.0.1
+ * @author manke
+ * @date 2020-04-22 13:53
  */
-public class BizException {
+public class BizException extends RuntimeException {
+
     private static final long serialVersionUID = 1L;
 
     /**
      * 错误码
      */
-    protected String errorCode;
+    protected Integer errorCode;
     /**
      * 错误信息
      */
     protected String errorMsg;
 
+    public BizException(Integer errorCode, String errorMsg) {
+        this.errorCode = errorCode;
+        this.errorMsg = errorMsg;
+    }
+    public BizException(ResultCode resultCode) {
+        this.errorCode = resultCode.getCode();
+        this.errorMsg = resultCode.getMessage();
+    }
+
+    public BizException(String message, Integer errorCode, String errorMsg) {
+        super(message);
+        this.errorCode = errorCode;
+        this.errorMsg = errorMsg;
+    }
+
+    public BizException(String message, Throwable cause, Integer errorCode, String errorMsg) {
+        super(message, cause);
+        this.errorCode = errorCode;
+        this.errorMsg = errorMsg;
+    }
+
+    public BizException(Throwable cause, Integer errorCode, String errorMsg) {
+        super(cause);
+        this.errorCode = errorCode;
+        this.errorMsg = errorMsg;
+    }
+
+    public BizException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace, Integer errorCode, String errorMsg) {
+        super(message, cause, enableSuppression, writableStackTrace);
+        this.errorCode = errorCode;
+        this.errorMsg = errorMsg;
+    }
+
     public static long getSerialVersionUID() {
         return serialVersionUID;
     }
 
-    public String getErrorCode() {
+    public Integer getErrorCode() {
         return errorCode;
     }
 
-    public void setErrorCode(String errorCode) {
+    public void setErrorCode(Integer errorCode) {
         this.errorCode = errorCode;
     }
 
